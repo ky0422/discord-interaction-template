@@ -4,7 +4,7 @@ import { logger } from '..';
 
 export default async () => {
     const commands: Array<ApplicationCommandDataResolvable> = Array();
-    fs.readdirSync('./dist/commands').forEach(async (file) => {
+    await fs.readdirSync('./dist/commands').forEach(async (file) => {
         await import(`../commands/${file}`).then(async (command) => {
             const _command = command.default.command;
             if (!_command) return;
