@@ -57,5 +57,5 @@ export default {
     },
     command: new SlashCommandBuilder()
         .setName('menu')
-        .setDescription('button component test'),
+        .setDescription('menu test'),
 };
