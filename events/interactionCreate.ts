@@ -8,7 +8,7 @@ export default async (interaction: Interaction) => {
         })
         .catch(async () => {
             import('../commands/default').then(async (cmd) => {
-                await cmd.default.process(interaction as any);
+                cmd.default.process(interaction as any);
             });
         });
 };
