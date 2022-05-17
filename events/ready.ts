@@ -1,5 +1,5 @@
-import client from '..';
+import client, { logger } from '..';
 
 export default () => {
-    console.log(`${client.guilds.cache.size} guilds, ${client.user?.tag}.`);
+    logger.info(`${client.guilds.cache.size} guilds, ${client.user?.tag}.`);
 };
