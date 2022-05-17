@@ -8,6 +8,8 @@ import registCommand from './src/commandRegister';
 
 import _Logger from './src/logger';
 
+export const logger = new _Logger('MAIN');
+
 const client = new Client({
     intents: config.intents,
 });
@@ -31,7 +33,5 @@ client.on('interactionCreate', interactionCreate);
     });
     client.login(config.token);
 })();
-
-export const logger = new _Logger('MAIN');
 
 export default client;
