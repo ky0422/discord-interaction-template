@@ -107,6 +107,6 @@ dist
 ####
 
 dist
-config.ts
+config_private.ts
 package-lock.json
 .DS_Store
