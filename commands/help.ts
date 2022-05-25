@@ -10,5 +10,5 @@ export default {
     },
     command: new SlashCommandBuilder()
         .setName('help')
-        .setDescription('Help Command owo'),
+        .setDescription('Help command'),
 };
