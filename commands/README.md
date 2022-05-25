@@ -39,7 +39,7 @@ export default {
                 new MessageActionRow().addComponents(
                     new MessageButton()
                         .setCustomId(_id)
-                        .setLabel('ddd')
+                        .setLabel('Click me!')
                         .setStyle('PRIMARY')
                 ),
             ],
@@ -52,7 +52,7 @@ export default {
         });
         collector?.on('collect', (i) => {
             i.reply({
-                content: `dd`,
+                content: `Button clicked.`,
                 ephemeral: true,
             });
         });
@@ -118,7 +118,7 @@ export default {
             i.reply({
                 content: `selected ${(i as SelectMenuInteraction).values.join(
                     ', '
-                )}`,
+                )}.`,
                 ephemeral: true,
             });
         });
