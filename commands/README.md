@@ -1,25 +1,27 @@
+> **In `dev_guild` mode, the command name is automatically converted to `dev_(name)`.**
+
+> **Do not include `dev_` in the `command file` or `command name`.**
+>
+> The corresponding indication is required for testing in `dev_guild`.
+
 # Command template
 
 ```ts
-import { SlashCommandBuilder } from '@discordjs/builders';
 import { MessageComponentInteraction } from 'discord.js';
 
 export default {
     process: (interaction: MessageComponentInteraction) => {
-        interaction.reply({
-            content: '',
-            ephemeral: true,
-        });
+        // Do something
     },
     command: new SlashCommandBuilder()
-        .setName('') // command name
-        .setDescription(''), // command description
+        .setName('command')
+        .setDescription('Command description'),
 };
 ```
 
-# Examples
+---
 
-## Button
+# Button
 
 ```ts
 import { SlashCommandBuilder } from '@discordjs/builders';
@@ -39,7 +41,7 @@ export default {
                 new MessageActionRow().addComponents(
                     new MessageButton()
                         .setCustomId(_id)
-                        .setLabel('Click me!')
+                        .setLabel('Click here!')
                         .setStyle('PRIMARY')
                 ),
             ],
@@ -52,7 +54,7 @@ export default {
         });
         collector?.on('collect', (i) => {
             i.reply({
-                content: `Button clicked.`,
+                content: 'Button clicked.',
                 ephemeral: true,
             });
         });
@@ -79,12 +81,12 @@ export default {
     process: (interaction: MessageComponentInteraction) => {
         const _id_select = uuid();
         interaction.reply({
-            content: `Select a item`,
+            content: `Select an item`,
             components: [
                 new MessageActionRow().addComponents(
                     new MessageSelectMenu()
                         .setCustomId(_id_select)
-                        .setPlaceholder('Select a item')
+                        .setPlaceholder('Select an item')
                         .setMinValues(1)
                         .setMaxValues(2)
                         .addOptions([
@@ -116,9 +118,9 @@ export default {
 
         collector?.on('collect', (i) => {
             i.reply({
-                content: `selected ${(i as SelectMenuInteraction).values.join(
-                    ', '
-                )}.`,
+                content: `Selected ${(i as SelectMenuInteraction).values
+                    .map((v) => `\`${v}\``)
+                    .join(', ')}.`,
                 ephemeral: true,
             });
         });
