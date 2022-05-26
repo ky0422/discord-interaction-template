@@ -2,7 +2,7 @@ import { Interaction } from 'discord.js';
 
 export default async (interaction: Interaction) => {
     if (!interaction.isCommand()) return;
-    import(`../commands/${interaction.commandName}`)
+    import(`../commands/${interaction.commandName.replace('dev_', '')}`)
         .then(async (cmd) => {
             await cmd.default.process(interaction);
         })
