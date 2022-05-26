@@ -11,7 +11,6 @@ interface LoggerBase {
     warn(...args: Array<T>): any;
     error(...args: Array<T>): any;
     debug(...args: Array<T>): any;
-    _print(content: string): any;
 }
 
 export default class implements LoggerBase {
@@ -43,9 +42,5 @@ export default class implements LoggerBase {
 
     public debug(...args: Array<T>) {
         this.log('DEBUG'.cyan, '', ...args);
-    }
-
-    public _print(content: string) {
-        process.stdout.write(content);
     }
 }
