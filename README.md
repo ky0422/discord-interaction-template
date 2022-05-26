@@ -60,3 +60,7 @@ export default {
     intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],
 } as Config;
 ```
+
+# Command
+
+> See [**commands**](./commands/README.md).
