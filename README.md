@@ -6,13 +6,13 @@
 >
 > `TypeScript`: `v4.7.2`
 >
-> For other dependencies, see [**dependencies**](README.md#dependencies)
+> For other dependencies, see [**dependencies**](#dependencies)
 
 ```
 npm i
 ```
 
-> After completing the setting in the `config.ts`, use the following command.
+> After completing the setting in the [`config.ts`](#config), use the following command.
 
 ```
 npm run build
@@ -22,6 +22,7 @@ npm run start
 ---
 
 ### dependencies
+
 ```json
 "dependencies": {
     "@discordjs/rest": "^0.4.1",
@@ -32,4 +33,30 @@ npm run start
     "typescript": "^4.7.2",
     "uuid": "^8.3.2"                 // optional
 }
+```
+
+### config
+
+> **Note:**
+> 
+> If you have not configured `dev_guild`, it will be registered in **global commands**.
+> 
+> _**It may take up to an hour to register global commands.**_
+
+```ts
+import { Intents, IntentsString } from 'discord.js';
+
+interface Config {
+    token: string;
+    client_id: string;
+    dev_guild?: string;
+    intents: Array<IntentsString | number>;
+}
+
+export default {
+    token: process.env.TOKEN,
+    client_id: process.env.CLIENT_ID,
+    dev_guild: process.env.DEV_GUILD,
+    intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],
+} as Config;
 ```
