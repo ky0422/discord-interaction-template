@@ -1,26 +1,24 @@
 import colors from 'colors';
 colors.enable();
 
-type T = string;
-
-interface LoggerBase {
+interface LoggerBase<T> {
     name: string;
 
-    log(t: T, o: boolean, ...args: Array<T>): any;
+    log(t: string, o: boolean, ...args: Array<T>): any;
     info(...args: Array<T>): any;
     warn(...args: Array<T>): any;
     error(...args: Array<T>): any;
     debug(...args: Array<T>): any;
 }
 
-export default class implements LoggerBase {
+export class Logger<T> implements LoggerBase<T> {
     public name: string = 'Logger';
 
     constructor(loggerName: string) {
         this.name = loggerName;
     }
 
-    public log(t: T, o: boolean, ...args: Array<T>) {
+    public log(t: string, o: boolean, ...args: Array<T>) {
         console.log(
             `[${this.name.gray}] [${t}]${o ? ' ' : ''} [${
                 new Date().toLocaleTimeString().white
@@ -44,3 +42,5 @@ export default class implements LoggerBase {
         this.log('DEBUG'.cyan, false, ...args);
     }
 }
+
+export default new Logger<string>('MAIN');
