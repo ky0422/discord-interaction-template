@@ -5,10 +5,7 @@ import { Routes } from 'discord-api-types/v10';
 import config from './config';
 import { ready, interactionCreate } from './events';
 import registCommand from './src/commandRegister';
-
-import _Logger from './src/logger';
-
-export const logger = new _Logger('MAIN');
+import logger from './src/logger';
 
 if (!config.token || !(typeof config.token === 'string'))
     throw new Error(
