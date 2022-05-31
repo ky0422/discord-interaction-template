@@ -1,4 +1,5 @@
-import client, { logger } from '..';
+import logger from '../src/logger';
+import client from '..';
 
 export default () =>
     logger.info(`${client.guilds.cache.size} guilds, ${client.user?.tag}.`);
