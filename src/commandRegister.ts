@@ -1,6 +1,6 @@
 import { ApplicationCommandDataResolvable } from 'discord.js';
 import fs from 'fs';
-import { logger } from '..';
+import logger from '../src/logger';
 
 export default async () => {
     const commands: Array<ApplicationCommandDataResolvable> = Array();
