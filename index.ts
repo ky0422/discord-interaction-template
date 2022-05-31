@@ -29,21 +29,17 @@ client.on('interactionCreate', interactionCreate);
             options: RequestData = {
                 body: commands,
             }
-        ) => {
+        ) =>
             await new REST({ version: '10' })
                 .setToken(config.token)
                 .put(route, options);
-        };
         if (config.dev_guild) {
             commands.map((c) => (c.name = `dev_${c.name}`));
             await rest(
                 Routes.applicationGuildCommands(
                     config.client_id,
                     config.dev_guild
-                ),
-                {
-                    body: commands,
-                }
+                )
             );
             logger.info(`Registered ${commands.length} commands. (DEV)`);
         } else {
