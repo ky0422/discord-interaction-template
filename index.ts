@@ -10,12 +10,10 @@ import _Logger from './src/logger';
 
 export const logger = new _Logger('MAIN');
 
-if (!config.token || !(typeof config.token === 'string')) {
-    console.log(
-        `Token is an invalid value.\nSee \`https://github.com/tsukiroku/discord-interaction-template#config\` for more info.`
+if (!config.token || !(typeof config.token === 'string'))
+    throw new Error(
+        `Token is an invalid value.\nSee \`https://github.com/tsukiroku/discord-interaction-template#config\` for more info.\n`
     );
-    process.exit(1);
-}
 
 const client = new Client({
     intents: config.intents,
