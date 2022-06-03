@@ -14,9 +14,9 @@ npm i
 
 > After completing the setting in the [`config.ts`](#config), use the following command.
 
-```
+```sh
 npm run build
-npm run start
+npm run start # build automatically
 ```
 
 ---
