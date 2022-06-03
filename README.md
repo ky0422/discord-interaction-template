@@ -46,7 +46,7 @@ npm run start # build automatically
 ```ts
 import { Intents, IntentsString } from 'discord.js';
 
-interface Config {
+export interface Config {
     token: string;
     client_id: string;
     dev_guild?: string;
