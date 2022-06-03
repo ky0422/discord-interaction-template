@@ -9,7 +9,7 @@ import logger from './src/logger';
 
 if (!config.token || !(typeof config.token === 'string'))
     throw new Error(
-        `Token is an invalid value.\nSee \`https://github.com/tsukiroku/discord-interaction-template/blob/main/errors/token.md\` for more info.\n`
+        `Token is an invalid value.\nSee \`https://github.com/tsukiroku/discord-interaction-template/issues/1#issuecomment-1145866930\` for more info.\n`
     );
 
 const client = new Client({
