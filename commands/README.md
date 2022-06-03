@@ -6,6 +6,12 @@
 
 # Command template
 
+> [**Button**](#button)
+> 
+> [**Select Menu**](#select-menu)
+> 
+> [**Context Menu**](#context-menu)
+
 ```ts
 import { MessageComponentInteraction } from 'discord.js';
 
@@ -65,7 +71,7 @@ export default {
 };
 ```
 
-## Select Menu
+# Select Menu
 
 ```ts
 import { SlashCommandBuilder } from '@discordjs/builders';
@@ -128,5 +134,22 @@ export default {
     command: new SlashCommandBuilder()
         .setName('menu')
         .setDescription('Select Menu message component'),
+};
+```
+
+# Context Menu
+
+```ts
+import { ContextMenuCommandBuilder } from '@discordjs/builders';
+import { ContextMenuInteraction } from 'discord.js';
+
+export default {
+    process: (interaction: ContextMenuInteraction) => {
+        interaction.reply({
+            content: `${interaction.options.data[0].message?.content}`,
+            ephemeral: true,
+        });
+    },
+    command: new ContextMenuCommandBuilder().setName('menu').setType(3),
 };
 ```
