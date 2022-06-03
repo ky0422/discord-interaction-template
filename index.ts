@@ -1,11 +1,9 @@
-import { RequestData, REST, RouteLike } from '@discordjs/rest';
 import { Client } from 'discord.js';
-import { Routes } from 'discord-api-types/v10';
+import { ready, interactionCreate } from './events';
 
 import config from './config';
-import { ready, interactionCreate } from './events';
-import registCommand from './src/commandRegister';
 import logger from './src/logger';
+import BotClient from './src/bot';
 
 if (!config.token || !(typeof config.token === 'string'))
     throw new Error(
@@ -19,33 +17,8 @@ const client = new Client({
 client.on('ready', ready);
 client.on('interactionCreate', interactionCreate);
 
-(async () => {
-    // If you don't have knowledge of this, don't modify the code.
-    await registCommand('commands').then(async (commands) => {
-        const rest = async (
-            route: RouteLike,
-            options: RequestData = {
-                body: commands,
-            }
-        ) =>
-            await new REST({ version: '10' })
-                .setToken(config.token)
-                .put(route, options);
-        if (config.dev_guild) {
-            commands.map((c) => (c.name = `dev_${c.name}`));
-            await rest(
-                Routes.applicationGuildCommands(
-                    config.client_id,
-                    config.dev_guild
-                )
-            );
-            logger.info(`Registered ${commands.length} commands. (DEV)`);
-        } else {
-            await rest(Routes.applicationCommands(config.client_id));
-            logger.info(`Registered ${commands.length} commands. (GLOBAL)`);
-        }
-    });
-    client.login(config.token);
-})();
+new BotClient(client, logger, config).registCommand('commands');
+
+client.login(config.token);
 
 export default client;
