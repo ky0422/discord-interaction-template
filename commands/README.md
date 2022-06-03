@@ -1,3 +1,5 @@
+> **Command file name and, command name must match.**
+
 > **In `dev_guild` mode, the command name is automatically converted to `dev_(name)`.**
 
 > **Do not include `dev_` in the `command file` or `command name`.**
