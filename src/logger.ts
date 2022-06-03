@@ -1,7 +1,7 @@
 import colors from 'colors';
 colors.enable();
 
-interface LoggerBase<T> {
+interface ILoggerBase<T> {
     name: string;
 
     log(t: string, o: boolean, ...args: Array<T>): any;
@@ -11,7 +11,7 @@ interface LoggerBase<T> {
     debug(...args: Array<T>): any;
 }
 
-export class Logger<T> implements LoggerBase<T> {
+export class Logger<T> implements ILoggerBase<T> {
     public name: string = 'Logger';
 
     constructor(loggerName: string) {
