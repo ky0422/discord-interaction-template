@@ -7,9 +7,9 @@
 # Command template
 
 > [**Button**](#button)
-> 
+>
 > [**Select Menu**](#select-menu)
-> 
+>
 > [**Context Menu**](#context-menu)
 
 ```ts
@@ -28,6 +28,8 @@ export default {
 ---
 
 # Button
+
+![](../resource/button.gif)
 
 ```ts
 import { SlashCommandBuilder } from '@discordjs/builders';
@@ -72,6 +74,8 @@ export default {
 ```
 
 # Select Menu
+
+![](../resource/select_menu.gif)
 
 ```ts
 import { SlashCommandBuilder } from '@discordjs/builders';
@@ -138,6 +142,8 @@ export default {
 ```
 
 # Context Menu
+
+![](../resource/context_menu.gif)
 
 ```ts
 import { ContextMenuCommandBuilder } from '@discordjs/builders';
