@@ -20,7 +20,7 @@ client.on('ready', ready);
 client.on('interactionCreate', interactionCreate);
 
 (async () => {
-    await registCommand().then(async (commands) => {
+    await registCommand('commands').then(async (commands) => {
         const rest = async (
             route: RouteLike,
             options: RequestData = {
