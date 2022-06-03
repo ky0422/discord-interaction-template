@@ -2,6 +2,7 @@ import { ApplicationCommandDataResolvable } from 'discord.js';
 import fs from 'fs';
 import logger from './logger';
 
+// If you don't have knowledge of this, don't modify the code.
 export default async (path: string) => {
     const commands: Array<ApplicationCommandDataResolvable> = Array();
     await fs.readdirSync(`./dist/${path}`).forEach(
