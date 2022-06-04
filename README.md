@@ -1,4 +1,4 @@
-# Discord interaction template (TypeScript)
+# Discord interaction template (TypeScript) (v13)
 
 > **`discord.js` will be upgraded to `v14` soon. Unless you plan to use `v13`, wait until `v14` is released.**
 
