@@ -1,6 +1,8 @@
 import { SlashCommandBuilder } from '@discordjs/builders';
 import {
+    CommandInteraction,
     CommandInteractionOptionResolver,
+    Interaction,
     MessageComponentInteraction,
 } from 'discord.js';
 import config from '../config';
@@ -17,7 +19,9 @@ export default {
 
         try {
             const result: string = eval(
-                (interaction as any).options.getString('code')
+                (
+                    interaction as unknown as CommandInteraction
+                ).options.getString('code') ?? ''
             );
             interaction.reply({
                 content: `\`\`\`ts\n${result.replace(
