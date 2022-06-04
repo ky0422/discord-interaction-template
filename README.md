@@ -1,5 +1,7 @@
 # Discord interaction template (TypeScript)
 
+> **`discord.js` will be upgraded to `v14` soon. Unless you plan to use `v13`, wait until `v14` is released.**
+
 > **Note:**
 >
 > `Node.js`: `v16.15.0 (stable)`, test on `v18.2.0 (latest)`
@@ -38,9 +40,9 @@ npm run start # build automatically
 ### config
 
 > **Note:**
-> 
+>
 > If you have not configured `dev_guild`, it will be registered in **global commands**.
-> 
+>
 > _**It may take up to an hour to register global commands.**_
 
 ```ts
