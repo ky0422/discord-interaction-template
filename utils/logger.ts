@@ -42,5 +42,3 @@ export class Logger<T> implements ILoggerBase<T> {
         this.log('DEBUG'.cyan, false, ...args);
     }
 }
-
-export default new Logger<string>('MAIN');
