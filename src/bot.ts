@@ -1,60 +1,58 @@
 // If you don't have knowledge of this, don't modify the code.
 
-import { RequestData, REST, RouteLike } from '@discordjs/rest';
-
-import { Routes } from 'discord-api-types/v10';
-import { Client } from 'discord.js';
-import { Config } from '../config';
-import { Logger } from '../src/logger';
+import { Awaitable, Client, ClientEvents, ClientOptions } from 'discord.js';
+import _config, { Config } from '../config';
+import { Logger } from '../utils/logger';
 
 import registCommand from '../src/commandRegister';
 
-interface IBot {
-    client: Client;
+interface IBotOptions {
+    readonly logger?: Logger<string>;
+    readonly config?: Config;
+    readonly path?: string;
+    readonly clientOptions?: ClientOptions;
+}
+
+interface IBot extends IBotOptions {
+    _client: Client;
     logger: Logger<string>;
     config: Config;
-    registCommand: (path: string) => any;
+    login: (token: string) => Promise<any>;
+    on: <K extends keyof ClientEvents>(
+        event: K,
+        callback: (...args: ClientEvents[K]) => Awaitable<void>
+    ) => any;
 }
 
 export default class implements IBot {
-    client: Client<boolean>;
-    logger: Logger<string>;
-    config: Config;
+    public readonly _client: Client<boolean>;
+    public readonly logger: Logger<string>;
+    public readonly config: Config;
 
-    constructor(client: Client, logger: Logger<string>, config: Config) {
-        this.client = client;
-        this.logger = logger;
-        this.config = config;
-    }
-
-    public async registCommand(path: string) {
-        await registCommand(path).then(async (commands) => {
-            const rest = async (
-                route: RouteLike,
-                options: RequestData = {
-                    body: commands,
-                }
-            ) =>
-                await new REST({ version: '10' })
-                    .setToken(this.config.token)
-                    .put(route, options);
-            if (this.config.dev_guild) {
-                commands.map((c) => (c.name = `dev_${c.name}`));
-                await rest(
-                    Routes.applicationGuildCommands(
-                        this.config.client_id,
-                        this.config.dev_guild
-                    )
-                );
-                this.logger.info(
-                    `Registered ${commands.length} commands. (DEV)`
-                );
-            } else {
-                await rest(Routes.applicationCommands(this.config.client_id));
-                this.logger.info(
-                    `Registered ${commands.length} commands. (GLOBAL)`
-                );
-            }
+    constructor(options?: IBotOptions) {
+        this.logger = options?.logger ?? new Logger<string>('MAIN');
+        this.config = options?.config ?? _config;
+        this._client = new Client({
+            ...options?.clientOptions,
+            intents: this.config.intents,
+        });
+        registCommand({
+            logger: this.logger,
+            config: this.config,
+            path: options?.path ?? 'commands',
         });
     }
+
+    public login(token: string) {
+        return this._client.login(token);
+    }
+
+    public on<K extends keyof ClientEvents>(
+        event: K,
+        callback: (...args: ClientEvents[K]) => Awaitable<void>
+    ) {
+        return this._client.on(event, callback);
+    }
 }
+
+export { IBotOptions, IBot };

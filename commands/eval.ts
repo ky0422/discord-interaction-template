@@ -1,11 +1,7 @@
 import { SlashCommandBuilder } from '@discordjs/builders';
-import {
-    CommandInteraction,
-    CommandInteractionOptionResolver,
-    Interaction,
-    MessageComponentInteraction,
-} from 'discord.js';
+import { CommandInteraction, MessageComponentInteraction } from 'discord.js';
 import config from '../config';
+import codeblock from '../utils/discord/codeblock';
 
 export default {
     process: (interaction: MessageComponentInteraction) => {
@@ -24,14 +20,17 @@ export default {
                 ).options.getString('code') ?? ''
             );
             interaction.reply({
-                content: `\`\`\`ts\n${result.replace(
-                    /[a-zA-Z\--_]{24}\.[a-zA-Z\--_]{6}\.[a-zA-Z\--_]{38}/g,
-                    'TOKEN'
-                )}\n\`\`\``,
+                content: codeblock(
+                    result.replace(
+                        /[a-zA-Z\--_]{24}\.[a-zA-Z\--_]{6}\.[a-zA-Z\--_]{38}/g,
+                        'TOKEN'
+                    ),
+                    'ts'
+                ),
             });
         } catch (e) {
             interaction.reply({
-                content: `\`\`\`ts\n${e}\n\`\`\``,
+                content: codeblock(e, 'ts'),
             });
         }
     },
