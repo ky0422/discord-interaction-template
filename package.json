@@ -6,14 +6,14 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/tsukiroku/discordbot.git"
+        "url": "git+https://github.com/tsukiroku/discord-interaction-template.git"
     },
     "author": "tsukiroku",
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/tsukiroku/discordbot/issues"
+        "url": "https://github.com/tsukiroku/discord-interaction-template/issues"
     },
-    "homepage": "https://github.com/tsukiroku/discordbot#readme",
+    "homepage": "https://github.com/tsukiroku/discord-interaction-template#readme",
     "dependencies": {
         "@discordjs/rest": "^0.4.1",
         "@types/uuid": "^8.3.4",
