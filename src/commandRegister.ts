@@ -3,10 +3,10 @@
 import { RequestData, REST, RouteLike } from '@discordjs/rest';
 import { Routes } from 'discord-api-types/v10';
 import { ApplicationCommandDataResolvable, ClientOptions } from 'discord.js';
-import fs from 'fs';
-import logger from '../utils/logger';
 import { R_Optional } from '../utils/types';
 import { IBotOptions } from './bot';
+import fs from 'fs';
+import client from '..';
 
 export const registCommand = async (path: string) => {
     const commands: Array<ApplicationCommandDataResolvable> = Array();
@@ -15,7 +15,7 @@ export const registCommand = async (path: string) => {
             await import(`../${path}/${file}`).then(async (command) => {
                 const _command = command.default.command;
                 if (!_command) return;
-                logger.info(
+                client.logger.info(
                     `Command ${_command.name} (${file}) loaded. (./${path})`
                 );
                 commands.push(_command.toJSON());
