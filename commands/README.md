@@ -41,10 +41,12 @@ export default {
 
 ![](../resource/select_menu.gif)
 
-<br>
-
 > **Source code**: [select_menu.ts](./select_menu.ts)
 
+<br>
+
 # Context Menu
+
+![](../resource/context_menu.gif)
 
 > **Source code**: [context_menu.ts](./context_menu.ts)
