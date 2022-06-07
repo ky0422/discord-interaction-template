@@ -25,7 +25,9 @@ export const registCommand = async (path: string) => {
 };
 
 export default async (
-    options: R_Optional<Omit<IBotOptions, 'clientOptions'>>
+    options: R_Optional<
+        Omit<IBotOptions, 'clientOptions' | 'handleInteraction'>
+    >
 ) => {
     await registCommand(options.path).then(async (commands) => {
         const rest = async (
