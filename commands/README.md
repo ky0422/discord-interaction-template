@@ -33,7 +33,7 @@ export default {
 
 ![](../resource/button.gif)
 
-> **Source code**: [button.ts](./button.ts)
+> **Source code**: [button.ts](./examples/button.ts)
 
 <br>
 
@@ -41,7 +41,7 @@ export default {
 
 ![](../resource/select_menu.gif)
 
-> **Source code**: [select_menu.ts](./select_menu.ts)
+> **Source code**: [select_menu.ts](./examples/select_menu.ts)
 
 <br>
 
@@ -49,4 +49,4 @@ export default {
 
 ![](../resource/context_menu.gif)
 
-> **Source code**: [context_menu.ts](./context_menu.ts)
+> **Source code**: [context_menu.ts](./examples/context_menu.ts)
