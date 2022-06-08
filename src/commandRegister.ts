@@ -25,9 +25,11 @@ export const registCommand = async (path: string) => {
 };
 
 export default async (
-    options: R_Optional<Omit<IBotOptions, 'clientOptions'>>
-) => {
-    await registCommand(options.path).then(async (commands) => {
+    options: R_Optional<
+        Omit<IBotOptions, 'clientOptions' | 'handleInteraction'>
+    >
+) =>
+    await registCommand(options.path?.path!).then(async (commands) => {
         const rest = async (
             route: RouteLike,
             _options: RequestData = {
@@ -55,4 +57,3 @@ export default async (
             );
         }
     });
-};

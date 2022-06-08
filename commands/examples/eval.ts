@@ -1,7 +1,7 @@
 import { SlashCommandBuilder } from '@discordjs/builders';
 import { CommandInteraction, MessageComponentInteraction } from 'discord.js';
-import config from '../config';
-import codeblock from '../utils/discord/codeblock';
+import config from '../../config';
+import codeblock from '../../utils/discord/codeblock';
 
 export default {
     process: (interaction: MessageComponentInteraction) => {
