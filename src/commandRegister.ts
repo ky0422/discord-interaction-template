@@ -29,7 +29,7 @@ export default async (
         Omit<IBotOptions, 'clientOptions' | 'handleInteraction'>
     >
 ) =>
-    await registCommand(options.path).then(async (commands) => {
+    await registCommand(options.path?.path!).then(async (commands) => {
         const rest = async (
             route: RouteLike,
             _options: RequestData = {
