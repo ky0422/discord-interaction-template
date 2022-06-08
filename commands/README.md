@@ -6,7 +6,7 @@
 >
 > The corresponding indication is required for testing in `dev_guild`.
 
-> [`index.ts#L11`](https://github.com/tsukiroku/discord-interaction-template/blob/main/index.ts#L1)
+> [`index.ts#L11`](https://github.com/tsukiroku/discord-interaction-template/blob/main/index.ts#L11)
 
 # Command template
 
