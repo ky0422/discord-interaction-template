@@ -15,6 +15,8 @@
 > [**Select Menu**](#select-menu)
 >
 > [**Context Menu**](#context-menu)
+>
+> [**Text Input (Modal)**](#text-input)
 
 ```ts
 import { MessageComponentInteraction } from 'discord.js';
@@ -52,3 +54,11 @@ export default {
 ![](../resource/context_menu.gif)
 
 > **Source code**: [context_menu.ts](./examples/context_menu.ts)
+
+<br>
+
+# Text Input
+
+![](../resource/text_input.png)
+
+> **Text input modal will be added after v14 is released.**
