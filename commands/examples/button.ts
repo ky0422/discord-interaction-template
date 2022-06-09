@@ -10,7 +10,7 @@ export default {
     process: (interaction: MessageComponentInteraction) => {
         const _id = uuid();
         interaction.reply({
-            content: `${_id}`,
+            content: `** **`,
             components: [
                 new MessageActionRow().addComponents(
                     new MessageButton()
