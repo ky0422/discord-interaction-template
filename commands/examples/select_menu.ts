@@ -11,7 +11,7 @@ export default {
     process: (interaction: MessageComponentInteraction) => {
         const _id_select = uuid();
         interaction.reply({
-            content: `Select an item`,
+            content: `** **`,
             components: [
                 new MessageActionRow().addComponents(
                     new MessageSelectMenu()
