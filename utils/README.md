@@ -9,3 +9,4 @@
 | `IMessageComponent` | `MessageComponentInteraction` |
 | `IContextMenu`      | `ContextMenuInteraction`      |
 | `ISelectMenu`       | `SelectMenuInteraction`       |
+| `IActionRowModal`   | `ModalActionRowComponent`     |
