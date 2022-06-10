@@ -1,10 +1,10 @@
 import { SlashCommandBuilder } from '@discordjs/builders';
-import { CommandInteraction, MessageComponentInteraction } from 'discord.js';
+import { ICommand, IMessageComponent } from '../../utils/types';
 
 export default {
-    process: (interaction: MessageComponentInteraction) => {
+    process: (interaction: IMessageComponent) => {
         const subCommand = (
-            interaction as unknown as CommandInteraction
+            interaction as unknown as ICommand
         ).options.getSubcommand();
 
         if (subCommand === 'all') {
