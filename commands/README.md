@@ -59,6 +59,6 @@ export default {
 
 # Text Input
 
-![](../resource/text_input.png)
+![](../resource/text_input.gif)
 
-> **Text input modal will be added after v14 is released.**
+> **Source code**: [text_input.ts](./examples/text_input.ts)
