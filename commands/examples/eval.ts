@@ -1,10 +1,10 @@
 import { SlashCommandBuilder } from '@discordjs/builders';
-import { CommandInteraction, MessageComponentInteraction } from 'discord.js';
 import config from '../../config';
 import codeblock from '../../utils/discord/codeblock';
+import { ICommand, IMessageComponent } from '../../utils/types';
 
 export default {
-    process: (interaction: MessageComponentInteraction) => {
+    process: (interaction: IMessageComponent) => {
         if (interaction.user.id !== config.owner_id) {
             interaction.reply({
                 content: '**You are not the owner of this bot.**',
@@ -15,9 +15,9 @@ export default {
 
         try {
             const result: string = eval(
-                (
-                    interaction as unknown as CommandInteraction
-                ).options.getString('code') ?? ''
+                (interaction as unknown as ICommand).options.getString(
+                    'code'
+                ) ?? ''
             );
             interaction.reply({
                 content: codeblock(

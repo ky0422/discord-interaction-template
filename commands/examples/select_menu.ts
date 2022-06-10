@@ -1,17 +1,13 @@
 import { SlashCommandBuilder } from '@discordjs/builders';
-import {
-    MessageActionRow,
-    MessageComponentInteraction,
-    MessageSelectMenu,
-    SelectMenuInteraction,
-} from 'discord.js';
+import { MessageActionRow, MessageSelectMenu } from 'discord.js';
 import { v4 as uuid } from 'uuid';
+import { IMessageComponent, ISelectMenu } from '../../utils/types';
 
 export default {
-    process: (interaction: MessageComponentInteraction) => {
+    process: (interaction: IMessageComponent) => {
         const _id_select = uuid();
         interaction.reply({
-            content: `Select an item`,
+            content: `** **`,
             components: [
                 new MessageActionRow().addComponents(
                     new MessageSelectMenu()
@@ -48,7 +44,7 @@ export default {
 
         collector?.on('collect', (i) => {
             i.reply({
-                content: `Selected ${(i as SelectMenuInteraction).values
+                content: `Selected ${(i as ISelectMenu).values
                     .map((v) => `\`${v}\``)
                     .join(', ')}.`,
                 ephemeral: true,

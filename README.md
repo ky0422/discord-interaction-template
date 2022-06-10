@@ -1,6 +1,16 @@
 # Discord interaction template (TypeScript) (v13)
 
+> 한국어 문서: [**README_kr.md**](README_kr.md)
+
 > **`discord.js` will be upgraded to `v14` soon. Unless you plan to use `v13`, wait until `v14` is released.**
+
+<br>
+
+> **_The source code requires 'basic knowledge' of TypeScript._**
+>
+> ignoring this, we do not answer questions about basic problems or problems that can be solved through **Googling**.
+
+<br>
 
 > **Note:**
 >
@@ -9,6 +19,8 @@
 > `TypeScript`: `v4.7.2`
 >
 > For other dependencies, see [**dependencies**](#dependencies)
+
+---
 
 ```
 npm i
@@ -36,6 +48,8 @@ npm run start # build automatically
     "uuid": "^8.3.2"                 // optional
 }
 ```
+
+---
 
 ### config
 
@@ -68,3 +82,13 @@ export default {
 # Command
 
 > See [**commands**](./commands/README.md).
+
+---
+
+**License: [**MIT License**](LICENSE)**
+
+### Contributors
+
+| Name                                            | [Contribution](https://github.com/all-contributors/all-contributors/blob/master/docs/emoji-key.md) | Discord               |
+| ----------------------------------------------- | -------------------------------------------------------------------------------------------------- | --------------------- |
+| [**@tsukiroku**](https://twitter.com/tsukiroku) | 💻 📖 💡 🚧 💬 👀 🛡 ️⚠️                                                                            | `RecoveryFedora#3525` |

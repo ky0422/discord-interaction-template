@@ -1,3 +1,5 @@
+> 한국어 문서: [**README_kr.md**](README_kr.md)
+
 > **Command file name and, command name must match.**
 
 > **In `dev_guild` mode, the command name is automatically converted to `dev_(name)`.**
@@ -15,6 +17,8 @@
 > [**Select Menu**](#select-menu)
 >
 > [**Context Menu**](#context-menu)
+>
+> [**Text Input (Modal)**](#text-input)
 
 ```ts
 import { MessageComponentInteraction } from 'discord.js';
@@ -52,3 +56,11 @@ export default {
 ![](../resource/context_menu.gif)
 
 > **Source code**: [context_menu.ts](./examples/context_menu.ts)
+
+<br>
+
+# Text Input
+
+![](../resource/text_input.gif)
+
+> **Source code**: [text_input.ts](./examples/text_input.ts)

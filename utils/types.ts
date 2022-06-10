@@ -3,7 +3,12 @@ import {
     Client,
     ClientEvents,
     ClientOptions,
+    CommandInteraction,
+    ContextMenuInteraction,
     Interaction,
+    MessageComponentInteraction,
+    ModalActionRowComponent,
+    SelectMenuInteraction,
 } from 'discord.js';
 import { Config } from '../config';
 import { Logger } from './logger';
@@ -40,4 +45,22 @@ interface PathOptions {
     readonly defaultPath?: string;
 }
 
-export { R_Optional, IBotOptions, IBot, PathOptions };
+type I = Interaction;
+type ICommand = CommandInteraction;
+type IMessageComponent = MessageComponentInteraction;
+type IContextMenu = ContextMenuInteraction;
+type ISelectMenu = SelectMenuInteraction;
+type ActionRowModal = ModalActionRowComponent;
+
+export {
+    R_Optional,
+    IBotOptions,
+    IBot,
+    PathOptions,
+    I,
+    ICommand,
+    IMessageComponent,
+    IContextMenu,
+    ISelectMenu,
+    ActionRowModal,
+};
