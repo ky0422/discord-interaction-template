@@ -1,5 +1,7 @@
 # Discord interaction template (TypeScript) (v13)
 
+> 한국어 문서: [**README_kr.md**](README_kr.md)
+
 > **`discord.js` will be upgraded to `v14` soon. Unless you plan to use `v13`, wait until `v14` is released.**
 
 <br>
