@@ -79,4 +79,4 @@ export default {
 
 # 명령어
 
-> [**commands**](./commands/README.md)를 참조해주세요.
+> [**commands**](./commands/README_kr.md)를 참조해주세요.
