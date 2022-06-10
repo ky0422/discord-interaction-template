@@ -12,7 +12,7 @@ export default async (
     import(`../${path}/${interaction.commandName.replace('dev_', '')}`)
         .then(async (command) => await command.default.process(interaction))
         .catch(async (e) =>
-            import(`../${path}/${default_path}`).then(async (command) => {
+            import(`../${default_path}`).then(async (command) => {
                 command.default.process(interaction as any);
                 client.logger.error(e);
             })
