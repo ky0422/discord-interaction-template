@@ -7,6 +7,7 @@ import {
     ContextMenuInteraction,
     Interaction,
     MessageComponentInteraction,
+    ModalActionRowComponent,
     SelectMenuInteraction,
 } from 'discord.js';
 import { Config } from '../config';
@@ -49,6 +50,7 @@ type ICommand = CommandInteraction;
 type IMessageComponent = MessageComponentInteraction;
 type IContextMenu = ContextMenuInteraction;
 type ISelectMenu = SelectMenuInteraction;
+type ActionRowModal = ModalActionRowComponent;
 
 export {
     R_Optional,
@@ -60,4 +62,5 @@ export {
     IMessageComponent,
     IContextMenu,
     ISelectMenu,
+    ActionRowModal,
 };
