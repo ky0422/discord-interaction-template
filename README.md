@@ -82,3 +82,13 @@ export default {
 # Command
 
 > See [**commands**](./commands/README.md).
+
+---
+
+**License: [**MIT License**](LICENSE)**
+
+### Contributors
+
+| Name                                            | [Contribution](https://github.com/all-contributors/all-contributors/blob/master/docs/emoji-key.md) | Discord               |
+| ----------------------------------------------- | -------------------------------------------------------------------------------------------------- | --------------------- |
+| [**@tsukiroku**](https://twitter.com/tsukiroku) | 💻 📖 💡 🚧 💬 👀 🛡 ️⚠️                                                                            | `RecoveryFedora#3525` |
