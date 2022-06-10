@@ -1,4 +1,4 @@
-# Shortened Types
+> 한국어 문서: [**README_kr.md**](README_kr.md)
 
 > these types are shorthand for types included in `discord.js`.
 
