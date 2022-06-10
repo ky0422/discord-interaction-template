@@ -2,6 +2,14 @@
 
 > **`discord.js` will be upgraded to `v14` soon. Unless you plan to use `v13`, wait until `v14` is released.**
 
+<br>
+
+> **_The source code requires 'basic knowledge' of TypeScript._**
+>
+> ignoring this, we do not answer questions about basic problems or problems that can be solved through **Googling**.
+
+<br>
+
 > **Note:**
 >
 > `Node.js`: `v16.15.0 (stable)`, test on `v18.2.0 (latest)`
@@ -9,6 +17,8 @@
 > `TypeScript`: `v4.7.2`
 >
 > For other dependencies, see [**dependencies**](#dependencies)
+
+---
 
 ```
 npm i
@@ -36,6 +46,8 @@ npm run start # build automatically
     "uuid": "^8.3.2"                 // optional
 }
 ```
+
+---
 
 ### config
 
