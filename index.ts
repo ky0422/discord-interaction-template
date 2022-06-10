@@ -5,7 +5,7 @@ import BotClient from './src/bot';
 
 if (!config.token || !(typeof config.token === 'string'))
     throw new Error(
-        `Token is an invalid value.\nSee \`https://github.com/tsukiroku/discord-interaction-template/issues/1#issuecomment-1148360826\` for more info.\n`
+        `Token is an invalid value.\nSee \`https://github.com/tsukiroku/discord-interaction-template/discussions/9#discussioncomment-2920521\` for more info.\n`
     );
 
 /**
