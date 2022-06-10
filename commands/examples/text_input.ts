@@ -11,7 +11,7 @@ import {
 } from 'discord.js';
 import client from '../..';
 import { v4 as uuid } from 'uuid';
-import { ICommand, IMessageComponent } from '../../utils/types';
+import { ActionRowModal, ICommand, IMessageComponent } from '../../utils/types';
 
 export default {
     process: (interaction: IMessageComponent) => {
@@ -21,7 +21,7 @@ export default {
                 .setCustomId(_id)
                 .setTitle('Text Input')
                 .addComponents(
-                    new MessageActionRow<ModalActionRowComponent>().addComponents(
+                    new MessageActionRow<ActionRowModal>().addComponents(
                         new TextInputComponent()
                             .setCustomId(`${_id}_${uuid()}`)
                             .setLabel("What's your name?")
@@ -33,7 +33,7 @@ export default {
                     )
                 )
                 .addComponents(
-                    new MessageActionRow<ModalActionRowComponent>().addComponents(
+                    new MessageActionRow<ActionRowModal>().addComponents(
                         new TextInputComponent()
                             .setCustomId(`${_id}_${uuid()}`)
                             .setLabel('Type something here')
@@ -46,7 +46,7 @@ export default {
         );
 
         new InteractionCollector(client._client, {
-            filter: (m: MessageComponentInteraction) =>
+            filter: (m: IMessageComponent) =>
                 m.user.id === interaction.user.id && m.customId === _id,
         }).on('collect', (i: ModalSubmitInteraction) => {
             i.reply({
