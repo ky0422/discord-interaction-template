@@ -31,22 +31,6 @@ npm run start # 자동으로 빌드됩니다.
 
 ---
 
-### 의존성 (dependencies)
-
-```json
-"dependencies": {
-    "@discordjs/rest": "^0.4.1",
-    "@types/uuid": "^8.3.4",         // optional
-    "colors": "^1.4.0",              // for Logger
-    "discord-api-types": "^0.33.0",
-    "discord.js": "^13.8.0",
-    "typescript": "^4.7.2",
-    "uuid": "^8.3.2"                 // optional
-}
-```
-
----
-
 ### 설정
 
 > **참고:**

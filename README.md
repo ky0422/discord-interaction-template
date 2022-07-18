@@ -33,22 +33,6 @@ npm run start # build automatically
 
 ---
 
-### dependencies
-
-```json
-"dependencies": {
-    "@discordjs/rest": "^0.4.1",
-    "@types/uuid": "^8.3.4",         // optional
-    "colors": "^1.4.0",              // for Logger
-    "discord-api-types": "^0.33.0",
-    "discord.js": "^13.8.0",
-    "typescript": "^4.7.2",
-    "uuid": "^8.3.2"                 // optional
-}
-```
-
----
-
 ### config
 
 > **Note:**
