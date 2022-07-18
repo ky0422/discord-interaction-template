@@ -10,3 +10,4 @@
 | `IContextMenu`      | `ContextMenuInteraction`      |
 | `ISelectMenu`       | `SelectMenuInteraction`       |
 | `IActionRowModal`   | `ModalActionRowComponent`     |
+| `IChatInput`        | `ChatInputCommandInteraction` |
