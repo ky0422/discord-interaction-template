@@ -1,6 +1,6 @@
 // If you don't have knowledge of this, don't modify the code.
 
-import { Interaction } from 'discord.js';
+import { Interaction, InteractionType } from 'discord.js';
 import client from '..';
 
 export default async (
@@ -8,13 +8,16 @@ export default async (
     path: string,
     default_path: string
 ) => {
-    if (!interaction.isCommand() && !interaction.isContextMenu()) return;
+    console.log(default_path);
+    if (!(interaction.type === InteractionType.ApplicationCommand)) return;
     import(`../${path}/${interaction.commandName.replace('dev_', '')}`)
         .then(async (command) => await command.default.process(interaction))
         .catch(async (e) =>
-            import(`../${default_path}`).then(async (command) => {
-                command.default.process(interaction as any);
-                client.logger.error(e);
-            })
+            import(`../${path.split('/')[0]}/${default_path}`).then(
+                async (command) => {
+                    command.default.process(interaction as any);
+                    client.logger.error(e);
+                }
+            )
         );
 };
