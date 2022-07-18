@@ -1,12 +1,10 @@
-# Discord interaction template (TypeScript) (v13)
+# Discord interaction template (TypeScript) (v14)
 
 > 한국어 문서: [**README_kr.md**](README_kr.md)
 
-> **`discord.js` will be upgraded to `v14` soon. Unless you plan to use `v13`, wait until `v14` is released.**
-
 <br>
 
-> **_The source code requires 'basic knowledge' of TypeScript._**
+> **_The source code requires 'basic knowledge' of TypeScript or JavaScript (Node.js)._**
 >
 > ignoring this, we do not answer questions about basic problems or problems that can be solved through **Googling**.
 
@@ -60,23 +58,16 @@ npm run start # build automatically
 > _**It may take up to an hour to register global commands.**_
 
 ```ts
-import { Intents, IntentsString } from 'discord.js';
-
-export interface Config {
-    token: string;
-    client_id: string;
-    dev_guild?: string;
-    owner_id: string;
-    intents: Array<IntentsString | number>;
-}
+import { GatewayIntentBits } from 'discord.js';
+import { Types } from './utils';
 
 export default {
     token: process.env.TOKEN,
     client_id: process.env.CLIENT_ID,
     dev_guild: process.env.DEV_GUILD,
     owner_id: process.env.OWNER_ID,
-    intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],
-} as Config;
+    intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages],
+} as Types.Config;
 ```
 
 # Command

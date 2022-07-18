@@ -1,8 +1,8 @@
-import { ContextMenuCommandBuilder } from '@discordjs/builders';
-import { IContextMenu } from '../../utils/types';
+import { ContextMenuCommandBuilder } from 'discord.js';
+import { Types } from '../../utils';
 
 export default {
-    process: (interaction: IContextMenu) => {
+    process: (interaction: Types.IContextMenu) => {
         interaction.reply({
             content: `${interaction.options.data[0].message?.content}`,
             ephemeral: true,

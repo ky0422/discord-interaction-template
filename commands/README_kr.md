@@ -10,55 +10,25 @@
 
 # 명령어 예제
 
-> [**버튼**](#button)
->
-> [**선택 메뉴**](#select-menu)
->
-> [**컨텍스트 메뉴**](#context-menu)
->
-> [**텍스트 인풋 (모달)**](#text-input)
+-   [**Button**](./examples/button.ts)
+    -   ![](../resource/button.gif)
+-   [**Select Menu**](./examples/select_menu.ts)
+    -   ![](../resource/select_menu.gif)
+-   [**Context Menu**](./examples/context_menu.ts)
+    -   ![](../resource/context_menu.gif)
+-   [**Text Input (Modal)**](./examples/text_input.ts)
+    -   ![](../resource/text_input.gif)
 
 ```ts
-import { MessageComponentInteraction } from 'discord.js';
+import { Types } from '../utils';
 
 export default {
-    process: (interaction: MessageComponentInteraction) => {
-        // Do something
+    process: (interaction: Types.IMessageComponent) => {
+        interaction.reply({
+            content: 'Hello, world!',
+            ephemeral: true,
+        });
     },
-    command: new SlashCommandBuilder()
-        .setName('command')
-        .setDescription('Command description'),
+    command: null,
 };
 ```
-
----
-
-# Button
-
-![](../resource/button.gif)
-
-> **소스 코드**: [button.ts](./examples/button.ts)
-
-<br>
-
-# Select Menu
-
-![](../resource/select_menu.gif)
-
-> **소스 코드**: [select_menu.ts](./examples/select_menu.ts)
-
-<br>
-
-# Context Menu
-
-![](../resource/context_menu.gif)
-
-> **소스 코드**: [context_menu.ts](./examples/context_menu.ts)
-
-<br>
-
-# Text Input
-
-![](../resource/text_input.gif)
-
-> **소스 코드**: [text_input.ts](./examples/text_input.ts)

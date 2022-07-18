@@ -1,5 +1,4 @@
-import { SlashCommandBuilder } from '@discordjs/builders';
-import { MessageActionRow, MessageSelectMenu } from 'discord.js';
+import { ActionRowBuilder, SelectMenuBuilder, SlashCommandBuilder } from 'discord.js';
 import { v4 as uuid } from 'uuid';
 import { IMessageComponent, ISelectMenu } from '../../utils/types';
 
@@ -9,8 +8,8 @@ export default {
         interaction.reply({
             content: `** **`,
             components: [
-                new MessageActionRow().addComponents(
-                    new MessageSelectMenu()
+                new ActionRowBuilder<SelectMenuBuilder>().addComponents(
+                    new SelectMenuBuilder()
                         .setCustomId(_id_select)
                         .setPlaceholder('Select an item')
                         .setMinValues(1)

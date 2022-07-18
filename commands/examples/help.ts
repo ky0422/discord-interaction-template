@@ -1,10 +1,10 @@
-import { SlashCommandBuilder } from '@discordjs/builders';
-import { ICommand, IMessageComponent } from '../../utils/types';
+import { SlashCommandBuilder } from 'discord.js';
+import { Types } from '../../utils';
 
 export default {
-    process: (interaction: IMessageComponent) => {
+    process: (interaction: Types.IMessageComponent) => {
         const subCommand = (
-            interaction as unknown as ICommand
+            interaction as unknown as Types.IChatInput
         ).options.getSubcommand();
 
         if (subCommand === 'all') {

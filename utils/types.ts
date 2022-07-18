@@ -1,21 +1,18 @@
 import {
     Awaitable,
+    ChatInputCommandInteraction,
     Client,
     ClientEvents,
     ClientOptions,
     CommandInteraction,
-    ContextMenuInteraction,
+    ContextMenuCommandInteraction,
+    GatewayIntentBits,
     Interaction,
     MessageComponentInteraction,
     ModalActionRowComponent,
     SelectMenuInteraction,
 } from 'discord.js';
-import { Config } from '../config';
 import { Logger } from './logger';
-
-type R_Optional<T> = {
-    [K in keyof T]-?: T[K];
-};
 
 interface IBotOptions {
     readonly logger?: Logger<string>;
@@ -45,15 +42,23 @@ interface PathOptions {
     readonly defaultPath?: string;
 }
 
+interface Config {
+    token: string;
+    client_id: string;
+    dev_guild?: string;
+    owner_id: string;
+    intents: Array<GatewayIntentBits>;
+}
+
 type I = Interaction;
 type ICommand = CommandInteraction;
 type IMessageComponent = MessageComponentInteraction;
-type IContextMenu = ContextMenuInteraction;
+type IContextMenu = ContextMenuCommandInteraction;
 type ISelectMenu = SelectMenuInteraction;
 type ActionRowModal = ModalActionRowComponent;
+type IChatInput = ChatInputCommandInteraction;
 
 export {
-    R_Optional,
     IBotOptions,
     IBot,
     PathOptions,
@@ -62,5 +67,7 @@ export {
     IMessageComponent,
     IContextMenu,
     ISelectMenu,
+    IChatInput,
     ActionRowModal,
+    Config,
 };
