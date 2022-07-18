@@ -12,55 +12,25 @@
 
 # Command template
 
-> [**Button**](#button)
->
-> [**Select Menu**](#select-menu)
->
-> [**Context Menu**](#context-menu)
->
-> [**Text Input (Modal)**](#text-input)
+-   [**Button**](./examples/button.ts)
+    -   ![](../resource/button.gif)
+-   [**Select Menu**](./examples/select_menu.ts)
+    -   ![](../resource/select_menu.gif)
+-   [**Context Menu**](./examples/context_menu.ts)
+    -   ![](../resource/context_menu.gif)
+-   [**Text Input (Modal)**](./examples/text_input.ts)
+    -   ![](../resource/text_input.gif)
 
 ```ts
-import { MessageComponentInteraction } from 'discord.js';
+import { Types } from '../utils';
 
 export default {
-    process: (interaction: MessageComponentInteraction) => {
-        // Do something
+    process: (interaction: Types.IMessageComponent) => {
+        interaction.reply({
+            content: 'Hello, world!',
+            ephemeral: true,
+        });
     },
-    command: new SlashCommandBuilder()
-        .setName('command')
-        .setDescription('Command description'),
+    command: null,
 };
 ```
-
----
-
-# Button
-
-![](../resource/button.gif)
-
-> **Source code**: [button.ts](./examples/button.ts)
-
-<br>
-
-# Select Menu
-
-![](../resource/select_menu.gif)
-
-> **Source code**: [select_menu.ts](./examples/select_menu.ts)
-
-<br>
-
-# Context Menu
-
-![](../resource/context_menu.gif)
-
-> **Source code**: [context_menu.ts](./examples/context_menu.ts)
-
-<br>
-
-# Text Input
-
-![](../resource/text_input.gif)
-
-> **Source code**: [text_input.ts](./examples/text_input.ts)

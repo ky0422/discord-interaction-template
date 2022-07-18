@@ -1,10 +1,9 @@
-import { SlashCommandBuilder } from '@discordjs/builders';
+import { SlashCommandBuilder } from 'discord.js';
+import { Discord, Types } from '../../utils';
 import config from '../../config';
-import codeblock from '../../utils/discord/codeblock';
-import { ICommand, IMessageComponent } from '../../utils/types';
 
 export default {
-    process: (interaction: IMessageComponent) => {
+    process: (interaction: Types.IMessageComponent) => {
         if (interaction.user.id !== config.owner_id) {
             interaction.reply({
                 content: '**You are not the owner of this bot.**',
@@ -15,12 +14,11 @@ export default {
 
         try {
             const result: string = eval(
-                (interaction as unknown as ICommand).options.getString(
-                    'code'
-                ) ?? ''
+                ((interaction as unknown as Types.ICommand).options.get('code')
+                    ?.value as string) ?? ''
             );
             interaction.reply({
-                content: codeblock(
+                content: Discord.codeBlock(
                     result.replace(
                         /[a-zA-Z\--_]{24}\.[a-zA-Z\--_]{6}\.[a-zA-Z\--_]{38}/g,
                         'TOKEN'
@@ -30,7 +28,7 @@ export default {
             });
         } catch (e) {
             interaction.reply({
-                content: codeblock(e, 'ts'),
+                content: Discord.codeBlock(e, 'ts'),
             });
         }
     },

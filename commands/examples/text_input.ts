@@ -1,57 +1,64 @@
-import { SlashCommandBuilder } from '@discordjs/builders';
 import {
+    ActionRowBuilder,
     InteractionCollector,
-    MessageActionRow,
-    MessageComponentInteraction,
-    Modal,
-    ModalActionRowComponent,
+    ModalBuilder,
     ModalSubmitInteraction,
+    SlashCommandBuilder,
+    TextInputBuilder,
     TextInputComponent,
-    TextInputComponentOptions,
+    TextInputStyle,
 } from 'discord.js';
 import client from '../..';
 import { v4 as uuid } from 'uuid';
-import { ActionRowModal, ICommand, IMessageComponent } from '../../utils/types';
+import { Types } from '../../utils';
 
 export default {
-    process: (interaction: IMessageComponent) => {
+    process: (interaction: Types.IMessageComponent) => {
         const _id = uuid();
         interaction.showModal(
-            new Modal()
+            new ModalBuilder()
                 .setCustomId(_id)
                 .setTitle('Text Input')
                 .addComponents(
-                    new MessageActionRow<ActionRowModal>().addComponents(
-                        new TextInputComponent()
+                    new ActionRowBuilder<TextInputBuilder>().addComponents(
+                        new TextInputBuilder()
                             .setCustomId(`${_id}_${uuid()}`)
                             .setLabel("What's your name?")
                             .setPlaceholder('Type here')
                             .setRequired(true)
-                            .setStyle('SHORT')
+                            .setStyle(TextInputStyle.Short)
                             .setMinLength(3)
                             .setMaxLength(10)
                     )
                 )
                 .addComponents(
-                    new MessageActionRow<ActionRowModal>().addComponents(
-                        new TextInputComponent()
+                    new ActionRowBuilder<TextInputBuilder>().addComponents(
+                        new TextInputBuilder()
                             .setCustomId(`${_id}_${uuid()}`)
                             .setLabel('Type something here')
                             .setPlaceholder('Type here')
                             .setRequired(true)
-                            .setStyle('PARAGRAPH')
+                            .setStyle(TextInputStyle.Paragraph)
                             .setMaxLength(500)
                     )
                 )
         );
 
         new InteractionCollector(client._client, {
-            filter: (m: IMessageComponent) =>
+            filter: (m) =>
                 m.user.id === interaction.user.id && m.customId === _id,
         }).on('collect', (i: ModalSubmitInteraction) => {
             i.reply({
                 content: `${i.components
-                    .map((c) => `\`${c.components[0].value}\``)
+                    .map(
+                        (c) =>
+                            `\`${
+                                (
+                                    c
+                                        .components[0] as unknown as TextInputComponent
+                                ).value
+                            }\``
+                    )
                     .join('\n\n')}`,
             });
         });

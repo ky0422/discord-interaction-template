@@ -1,7 +1,7 @@
-import { IMessageComponent } from '../utils/types';
+import { Types } from '../utils';
 
 export default {
-    process: (interaction: IMessageComponent) => {
+    process: (interaction: Types.IMessageComponent) => {
         interaction.reply({
             content: '** **',
             ephemeral: true,

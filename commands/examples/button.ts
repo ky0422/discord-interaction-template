@@ -1,19 +1,24 @@
-import { SlashCommandBuilder } from '@discordjs/builders';
-import { MessageActionRow, MessageButton } from 'discord.js';
+import {
+    ActionRowBuilder,
+    ButtonBuilder,
+    ButtonStyle,
+    SlashCommandBuilder,
+} from 'discord.js';
 import { v4 as uuid } from 'uuid';
-import { IMessageComponent } from '../../utils/types';
+import { Types } from '../../utils';
 
 export default {
-    process: (interaction: IMessageComponent) => {
+    process: (interaction: Types.IMessageComponent) => {
         const _id = uuid();
+
         interaction.reply({
             content: `** **`,
             components: [
-                new MessageActionRow().addComponents(
-                    new MessageButton()
+                new ActionRowBuilder<ButtonBuilder>().addComponents(
+                    new ButtonBuilder()
                         .setCustomId(_id)
                         .setLabel('Click here!')
-                        .setStyle('PRIMARY')
+                        .setStyle(ButtonStyle.Primary)
                 ),
             ],
         });
