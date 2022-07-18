@@ -1,10 +1,8 @@
 # 디스코드 인터렉션 템플릿 (타입스크립트) (v13)
 
-> `discord.js@v14`가 곧 릴리즈됩니다. `v14`가 릴리즈될 때까지 기다려주시거나, `v13`으로 계속 사용하셔도 됩니다.
-
 <br>
 
-> **해당 소스코드는 타입스크립트에 대한 기초적인 지식을 가지고 있다는 한에 사용하실 수 있습니다.**
+> **해당 소스코드는 타입스크립트 또는 자바스크립트(Node.js)에 대한 기초적인 지식을 가지고 있다는 한에 사용하실 수 있습니다.**
 >
 > 기초적인 문제나, **구글링**(**또는 문서 참조**)를 통해 해결 가능한 문제를 질문할 경우, 대답해드릴 수 없습니다.
 
@@ -58,23 +56,16 @@ npm run start # 자동으로 빌드됩니다.
 > _**전역 명령어가 등록되기까지 최대 1시간 이상 걸릴 수 있습니다.**_
 
 ```ts
-import { Intents, IntentsString } from 'discord.js';
-
-export interface Config {
-    token: string;
-    client_id: string;
-    dev_guild?: string;
-    owner_id: string;
-    intents: Array<IntentsString | number>;
-}
+import { GatewayIntentBits } from 'discord.js';
+import { Types } from './utils';
 
 export default {
     token: process.env.TOKEN,
     client_id: process.env.CLIENT_ID,
     dev_guild: process.env.DEV_GUILD,
     owner_id: process.env.OWNER_ID,
-    intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],
-} as Config;
+    intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages],
+} as Types.Config;
 ```
 
 # 명령어
