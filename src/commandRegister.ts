@@ -2,11 +2,13 @@
 
 import { RequestData, REST, RouteLike } from '@discordjs/rest';
 import { Routes } from 'discord-api-types/v10';
-import { ApplicationCommandDataResolvable, ClientOptions } from 'discord.js';
-import { R_Optional } from '../utils/types';
-import { IBotOptions } from './bot';
+import {
+    ApplicationCommandData,
+    ApplicationCommandDataResolvable,
+} from 'discord.js';
 import fs from 'fs';
 import client from '..';
+import { Types } from '../utils';
 
 export const registCommand = async (path: string) => {
     const commands: Array<ApplicationCommandDataResolvable> = Array();
@@ -25,8 +27,8 @@ export const registCommand = async (path: string) => {
 };
 
 export default async (
-    options: R_Optional<
-        Omit<IBotOptions, 'clientOptions' | 'handleInteraction'>
+    options: Required<
+        Omit<Types.IBotOptions, 'clientOptions' | 'handleInteraction'>
     >
 ) =>
     await registCommand(options.path?.path!).then(async (commands) => {
@@ -40,7 +42,12 @@ export default async (
                 .setToken(options.config.token)
                 .put(route, _options);
         if (options.config.dev_guild) {
-            commands.map((c) => (c.name = `dev_${c.name}`));
+            commands.map(
+                (c) =>
+                    ((c as ApplicationCommandData).name = `dev_${
+                        (c as ApplicationCommandData).name
+                    }`)
+            );
             await rest(
                 Routes.applicationGuildCommands(
                     options.config.client_id,

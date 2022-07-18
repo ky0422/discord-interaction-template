@@ -1,16 +1,16 @@
 // If you don't have knowledge of this, don't modify the code.
 
 import { Awaitable, Client, ClientEvents, Interaction } from 'discord.js';
-import _config, { Config } from '../config';
+import _config from '../config';
 import { Logger } from '../utils/logger';
 
 import registCommand from '../src/commandRegister';
-import { IBot, IBotOptions } from '../utils/types';
+import { Types } from '../utils';
 
-export default class implements IBot {
+export default class implements Types.IBot {
     public readonly _client: Client<boolean>;
     public readonly logger: Logger<string>;
-    public readonly config: Config;
+    public readonly config: Types.Config;
     public readonly handleInteraction:
         | ((
               interaction: Interaction,
@@ -19,7 +19,7 @@ export default class implements IBot {
           ) => any)
         | undefined;
 
-    constructor(options?: IBotOptions) {
+    constructor(options?: Types.IBotOptions) {
         this.logger = options?.logger ?? new Logger<string>('MAIN');
         this.config = options?.config ?? _config;
         this.handleInteraction = options?.handleInteraction;
@@ -59,5 +59,3 @@ export default class implements IBot {
         return this._client.on(event, callback);
     }
 }
-
-export { IBotOptions, IBot };
