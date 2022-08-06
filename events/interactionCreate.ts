@@ -8,7 +8,6 @@ export default async (
     path: string,
     default_path: string
 ) => {
-    console.log(default_path);
     if (!(interaction.type === InteractionType.ApplicationCommand)) return;
     import(`../${path}/${interaction.commandName.replace('dev_', '')}`)
         .then(async (command) => await command.default.process(interaction))
