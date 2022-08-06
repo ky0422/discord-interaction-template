@@ -28,6 +28,7 @@ export default {
                 m.user.id === interaction.user.id && m.customId === _id,
             // max: 1,
         });
+
         collector?.on('collect', (i) => {
             i.reply({
                 content: 'Button clicked.',
