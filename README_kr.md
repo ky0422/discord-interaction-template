@@ -43,13 +43,19 @@ npm run start # 자동으로 빌드됩니다.
 import { GatewayIntentBits } from 'discord.js';
 import { Types } from './utils';
 
-export default {
+const defaultAs = <T>(data: T) => data;
+
+export default defaultAs<Types.Config>({
     token: process.env.TOKEN,
     client_id: process.env.CLIENT_ID,
     dev_guild: process.env.DEV_GUILD,
     owner_id: process.env.OWNER_ID,
-    intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages],
-} as Types.Config;
+    intents: [
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.MessageContent,
+    ],
+});
 ```
 
 # 명령어

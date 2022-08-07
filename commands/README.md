@@ -12,14 +12,35 @@
 
 # Command template
 
--   [**Button**](./examples/button.ts)
-    -   ![](../resource/button.gif)
--   [**Select Menu**](./examples/select_menu.ts)
-    -   ![](../resource/select_menu.gif)
--   [**Context Menu**](./examples/context_menu.ts)
-    -   ![](../resource/context_menu.gif)
--   [**Text Input (Modal)**](./examples/text_input.ts)
-    -   ![](../resource/text_input.gif)
+## [**Button**](./examples/button.ts)
+
+<img src="../resource/button.gif" width="512px" />
+
+<br />
+
+## [**Select Menu**](./examples/select_menu.ts)
+
+<img src="../resource/select_menu.gif" width="512px" />
+
+<br />
+
+## [**Context Menu**](./examples/context_menu.ts)
+
+<img src="../resource/context_menu.gif" width="512px" />
+
+<br />
+
+## [**Text Input (Modal)**](./examples/text_input.ts)
+
+<img src="../resource/text_input.gif" width="512px" />
+
+<br />
+
+## [**Simple regex game (feat. `createMessageCollector` Example)**](./examples/regex.ts)
+
+<img src="../resource/regex_game.gif" width="512px" />
+
+<br />
 
 ```ts
 import { Types } from '../utils';

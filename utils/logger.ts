@@ -1,22 +1,8 @@
 import colors from 'colors';
 colors.enable();
 
-interface ILoggerBase<T> {
-    name: string;
-
-    log(t: string, o: boolean, ...args: Array<T>): any;
-    info(...args: Array<T>): any;
-    warn(...args: Array<T>): any;
-    error(...args: Array<T>): any;
-    debug(...args: Array<T>): any;
-}
-
-export class Logger<T> implements ILoggerBase<T> {
-    public name: string = 'Logger';
-
-    constructor(loggerName: string) {
-        this.name = loggerName;
-    }
+export class Logger<T> {
+    constructor(public name: string = 'MAIN') {}
 
     public log(t: string, o: boolean, ...args: Array<T>) {
         console.log(
