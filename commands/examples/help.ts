@@ -7,7 +7,7 @@ export default {
             interaction as unknown as Types.IChatInput
         ).options.getSubcommand();
 
-        if (subCommand === 'all') {
+        if (subCommand === 'all')
             interaction.reply({
                 content: `
 > **\`(dev_)[command]\`**
@@ -16,9 +16,8 @@ export default {
 > \`/select_menu\`
 > \`/eval [code]\`
                 `,
-                ephemeral: true,
             });
-        } else if (subCommand === 'owner') {
+        else if (subCommand === 'owner')
             interaction.reply({
                 content: `
 > **\`(dev_)[command]\`**
@@ -27,9 +26,7 @@ export default {
                 `,
                 ephemeral: true,
             });
-        } else {
-            interaction.reply('`/help [all | owner]`');
-        }
+        else interaction.reply('`/help [all | owner]`');
     },
     command: new SlashCommandBuilder()
         .setName('help')
