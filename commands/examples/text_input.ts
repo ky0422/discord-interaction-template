@@ -14,15 +14,16 @@ import { Types } from '../../utils';
 
 export default {
     process: (interaction: Types.IMessageComponent) => {
-        const _id = uuid();
+        const textModalCustomId = uuid();
+
         interaction.showModal(
             new ModalBuilder()
-                .setCustomId(_id)
+                .setCustomId(textModalCustomId)
                 .setTitle('Text Input')
                 .addComponents(
                     new ActionRowBuilder<TextInputBuilder>().addComponents(
                         new TextInputBuilder()
-                            .setCustomId(`${_id}_${uuid()}`)
+                            .setCustomId(`${textModalCustomId}_${uuid()}`)
                             .setLabel("What's your name?")
                             .setPlaceholder('Type here')
                             .setRequired(true)
@@ -34,7 +35,7 @@ export default {
                 .addComponents(
                     new ActionRowBuilder<TextInputBuilder>().addComponents(
                         new TextInputBuilder()
-                            .setCustomId(`${_id}_${uuid()}`)
+                            .setCustomId(`${textModalCustomId}_${uuid()}`)
                             .setLabel('Type something here')
                             .setPlaceholder('Type here')
                             .setRequired(true)
@@ -46,7 +47,8 @@ export default {
 
         new InteractionCollector(client.client, {
             filter: (m) =>
-                m.user.id === interaction.user.id && m.customId === _id,
+                m.user.id === interaction.user.id &&
+                m.customId === textModalCustomId,
         }).on('collect', (i: ModalSubmitInteraction) => {
             i.reply({
                 content: `${i.components

@@ -9,14 +9,14 @@ import { Types } from '../../utils';
 
 export default {
     process: (interaction: Types.IMessageComponent) => {
-        const _id = uuid();
+        const buttonComponentCustomId = uuid();
 
         interaction.reply({
             content: `** **`,
             components: [
                 new ActionRowBuilder<ButtonBuilder>().addComponents(
                     new ButtonBuilder()
-                        .setCustomId(_id)
+                        .setCustomId(buttonComponentCustomId)
                         .setLabel('Click here!')
                         .setStyle(ButtonStyle.Primary)
                 ),
@@ -25,7 +25,8 @@ export default {
 
         const collector = interaction.channel?.createMessageComponentCollector({
             filter: (m) =>
-                m.user.id === interaction.user.id && m.customId === _id,
+                m.user.id === interaction.user.id &&
+                m.customId === buttonComponentCustomId,
             // max: 1,
         });
 

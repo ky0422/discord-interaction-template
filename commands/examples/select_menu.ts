@@ -1,16 +1,21 @@
-import { ActionRowBuilder, SelectMenuBuilder, SlashCommandBuilder } from 'discord.js';
+import {
+    ActionRowBuilder,
+    SelectMenuBuilder,
+    SlashCommandBuilder,
+} from 'discord.js';
 import { v4 as uuid } from 'uuid';
 import { IMessageComponent, ISelectMenu } from '../../utils/types';
 
 export default {
     process: (interaction: IMessageComponent) => {
-        const _id_select = uuid();
+        const selectComponentCustomID = uuid();
+
         interaction.reply({
             content: `** **`,
             components: [
                 new ActionRowBuilder<SelectMenuBuilder>().addComponents(
                     new SelectMenuBuilder()
-                        .setCustomId(_id_select)
+                        .setCustomId(selectComponentCustomID)
                         .setPlaceholder('Select an item')
                         .setMinValues(1)
                         .setMaxValues(2)
@@ -37,7 +42,8 @@ export default {
 
         const collector = interaction.channel?.createMessageComponentCollector({
             filter: (m) =>
-                m.user.id === interaction.user.id && m.customId === _id_select,
+                m.user.id === interaction.user.id &&
+                m.customId === selectComponentCustomID,
             // max: 1,
         });
 
