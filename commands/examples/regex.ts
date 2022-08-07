@@ -33,7 +33,7 @@ export default {
         collector?.on('end', (collected, reason) => {
             if (reason === 'time')
                 interaction.editReply({
-                    content: 'Wrong answer, try again in 30 seconds.',
+                    content: 'Wrong answer, try again in a minute.',
                 });
         });
     },

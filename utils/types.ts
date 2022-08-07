@@ -26,15 +26,17 @@ interface IBotOptions {
     ) => any;
 }
 
-interface IBot extends IBotOptions {
-    _client: Client;
-    logger: Logger<string>;
-    config: Config;
-    login: (token: string) => Promise<any>;
-    on: <K extends keyof ClientEvents>(
-        event: K,
-        callback: (...args: ClientEvents[K]) => Awaitable<void>
-    ) => any;
+abstract class IBot implements IBotOptions {
+    public abstract readonly client: Client;
+    public abstract readonly logger: Logger<string>;
+    public abstract readonly config: Config;
+    public abstract readonly handleInteraction:
+        | ((
+              interaction: Interaction,
+              path: string,
+              default_path: string
+          ) => any)
+        | undefined;
 }
 
 interface PathOptions {
@@ -43,10 +45,10 @@ interface PathOptions {
 }
 
 interface Config {
-    token: string;
-    client_id: string;
+    token?: string;
+    client_id?: string;
     dev_guild?: string;
-    owner_id: string;
+    owner_id?: string;
     intents: Array<GatewayIntentBits>;
 }
 

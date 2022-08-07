@@ -21,8 +21,8 @@ const client = new BotClient({
     },
 });
 
-client.on('ready', ready);
+client.client.on('ready', ready);
 
-client.login(config.token);
+client.client.login(config.token);
 
 export default client;

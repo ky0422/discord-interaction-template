@@ -44,7 +44,7 @@ export default {
                 )
         );
 
-        new InteractionCollector(client._client, {
+        new InteractionCollector(client.client, {
             filter: (m) =>
                 m.user.id === interaction.user.id && m.customId === _id,
         }).on('collect', (i: ModalSubmitInteraction) => {
