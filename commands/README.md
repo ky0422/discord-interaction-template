@@ -1,4 +1,6 @@
-> 한국어 문서: [**README_kr.md**](README_kr.md)
+**EN | [KO](README_kr.md)**
+
+<br>
 
 > **Command file name and, command name must match.**
 
@@ -43,15 +45,15 @@
 <br />
 
 ```ts
-import { Types } from '../utils';
+import { Types } from '../utils'
 
 export default {
     process: (interaction: Types.IMessageComponent) => {
         interaction.reply({
             content: 'Hello, world!',
             ephemeral: true,
-        });
+        })
     },
     command: null,
-};
+}
 ```

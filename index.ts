@@ -1,12 +1,12 @@
-import { ready, interactionCreate } from './events';
+import { ready, interactionCreate } from './events'
 
-import config from './config';
-import BotClient from './src/bot';
+import config from './config'
+import BotClient from './src/botClient'
 
 if (!config.token || !(typeof config.token === 'string'))
     throw new Error(
         `Token is an invalid value.\nSee \`https://github.com/tsukiroku/discord-interaction-template/discussions/9#discussioncomment-2920521\` for more info.\n`
-    );
+    )
 
 /**
  * `path` option is where all commands are located.
@@ -15,14 +15,14 @@ if (!config.token || !(typeof config.token === 'string'))
  */
 const client = new BotClient({
     handleInteraction: interactionCreate,
-    path: {
-        path: 'commands/examples',
+    path: config.path ?? {
+        path: 'commands',
         defaultPath: 'default.js',
     },
-});
+})
 
-client.client.on('ready', ready);
+client.on('ready', ready)
 
-client.client.login(config.token);
+client.login(config.token)
 
-export default client;
+export default client

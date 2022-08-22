@@ -1,5 +1,7 @@
 # 디스코드 인터렉션 템플릿 (타입스크립트) (v13)
 
+**[EN](README.md) | KO**
+
 <br>
 
 > **해당 소스코드는 타입스크립트 또는 자바스크립트(Node.js)에 대한 기초적인 지식을 가지고 있다는 한에 사용하실 수 있습니다.**
@@ -8,7 +10,7 @@
 
 <br>
 
-> **참고:**
+> **Note**
 >
 > `Node.js`: `v16.15.0 (stable)`, `v18.2.0 (latest)` 환경에서 테스트
 >
@@ -40,22 +42,22 @@ npm run start # 자동으로 빌드됩니다.
 > _**전역 명령어가 등록되기까지 최대 1시간 이상 걸릴 수 있습니다.**_
 
 ```ts
-import { GatewayIntentBits } from 'discord.js';
-import { Types } from './utils';
+import { GatewayIntentBits } from 'discord.js'
+import { Types } from './utils'
 
-const defaultAs = <T>(data: T) => data;
+const defaultAs = <T>(data: T) => data
 
 export default defaultAs<Types.Config>({
-    token: process.env.TOKEN,
-    client_id: process.env.CLIENT_ID,
-    dev_guild: process.env.DEV_GUILD,
-    owner_id: process.env.OWNER_ID,
-    intents: [
-        GatewayIntentBits.Guilds,
-        GatewayIntentBits.GuildMessages,
-        GatewayIntentBits.MessageContent,
-    ],
-});
+    token: process.env.TOKEN, // 디스코드 봇 토큰
+    clientId: process.env.CLIENT_ID, // 디스코드 봇 클라이언트 아이디
+    devGuild: process.env.DEV_GUILD, // 개발 서버 아이디 (프로덕션에서만 사용)
+    ownerId: process.env.OWNER_ID, // 디스코드 봇 소유자 아이디
+    path: {
+        path: 'commands/examples', // 명령어 디렉토리 (기본값 'commands')
+        defaultPath: 'default.js', // 기본 명령어 (기본값 'default.js')
+    },
+    intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent], // 디스코드 인텐트 (일부 인텐트는 Discord developer portal에서 활성화 해야 합니다.)
+})
 ```
 
 # 명령어

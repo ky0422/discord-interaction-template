@@ -7,14 +7,14 @@ import {
     TextInputBuilder,
     TextInputComponent,
     TextInputStyle,
-} from 'discord.js';
-import client from '../..';
-import { v4 as uuid } from 'uuid';
-import { Types } from '../../utils';
+} from 'discord.js'
+import client from '../..'
+import { v4 as uuid } from 'uuid'
+import { Types } from '../../utils'
 
 export default {
     process: (interaction: Types.IMessageComponent) => {
-        const textModalCustomId = uuid();
+        const textModalCustomId = uuid()
 
         interaction.showModal(
             new ModalBuilder()
@@ -43,29 +43,15 @@ export default {
                             .setMaxLength(500)
                     )
                 )
-        );
+        )
 
         new InteractionCollector(client.client, {
-            filter: (m) =>
-                m.user.id === interaction.user.id &&
-                m.customId === textModalCustomId,
+            filter: (m) => m.user.id === interaction.user.id && m.customId === textModalCustomId,
         }).on('collect', (i: ModalSubmitInteraction) => {
             i.reply({
-                content: `${i.components
-                    .map(
-                        (c) =>
-                            `\`${
-                                (
-                                    c
-                                        .components[0] as unknown as TextInputComponent
-                                ).value
-                            }\``
-                    )
-                    .join('\n\n')}`,
-            });
-        });
+                content: `${i.components.map((c) => `\`${(c.components[0] as unknown as TextInputComponent).value}\``).join('\n\n')}`,
+            })
+        })
     },
-    command: new SlashCommandBuilder()
-        .setName('text_input')
-        .setDescription('Text Input modal message component'),
-};
+    command: new SlashCommandBuilder().setName('text_input').setDescription('Text Input modal message component'),
+}
