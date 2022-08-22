@@ -1,6 +1,6 @@
 # Discord interaction template (TypeScript) (v14)
 
-> 한국어 문서: [**README_kr.md**](README_kr.md)
+**EN | [KO](README_kr.md)**
 
 <br>
 
@@ -10,7 +10,7 @@
 
 <br>
 
-> **Note:**
+> **Note**
 >
 > `Node.js`: `v16.15.0 (stable)`, test on `v18.2.0 (latest)`
 >
@@ -42,25 +42,24 @@ npm run start # build automatically
 > _**It may take up to an hour to register global commands.**_
 
 ```ts
-import { GatewayIntentBits } from 'discord.js';
-import { Types } from './utils';
+import { GatewayIntentBits } from 'discord.js'
+import { Types } from './utils'
 
-const defaultAs = <T>(data: T) => data;
+const defaultAs = <T>(data: T) => data
 
 export default defaultAs<Types.Config>({
-    token: process.env.TOKEN,
-    client_id: process.env.CLIENT_ID,
-    dev_guild: process.env.DEV_GUILD,
-    owner_id: process.env.OWNER_ID,
-    intents: [
-        GatewayIntentBits.Guilds,
-        GatewayIntentBits.GuildMessages,
-        GatewayIntentBits.MessageContent,
-    ],
-});
+    token: process.env.TOKEN, // Discord bot token
+    clientId: process.env.CLIENT_ID, // Discord bot client id
+    devGuild: process.env.DEV_GUILD, // Discord guild id for development (production only)
+    ownerId: process.env.OWNER_ID, // Discord owner id
+    path: {
+        path: 'commands/examples', // path to commands (default 'commands')
+        defaultPath: 'default.js', // default command (default 'default.js')
+    },
+    intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent], // Discord intents (Some intents need to enable in the Discord developer portal)
+})
 ```
 
 # Command
 
 > See [**commands**](./commands/README.md).
-

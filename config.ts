@@ -1,16 +1,16 @@
-import { GatewayIntentBits } from 'discord.js';
-import { Types } from './utils';
+import { GatewayIntentBits } from 'discord.js'
+import { Types } from './utils'
 
-const defaultAs = <T>(data: T) => data;
+const defaultAs = <T>(data: T) => data
 
 export default defaultAs<Types.Config>({
     token: process.env.TOKEN,
-    client_id: process.env.CLIENT_ID,
-    dev_guild: process.env.DEV_GUILD,
-    owner_id: process.env.OWNER_ID,
-    intents: [
-        GatewayIntentBits.Guilds,
-        GatewayIntentBits.GuildMessages,
-        GatewayIntentBits.MessageContent,
-    ],
-});
+    clientId: process.env.CLIENT_ID,
+    devGuild: process.env.DEV_GUILD,
+    ownerId: process.env.OWNER_ID,
+    path: {
+        path: 'commands/examples',
+        defaultPath: 'default.js',
+    },
+    intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent],
+})

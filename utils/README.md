@@ -1,4 +1,6 @@
-> 한국어 문서: [**README_kr.md**](README_kr.md)
+**EN | [KO](README_kr.md)**
+
+<br>
 
 > these types are shorthand for types included in `discord.js`.
 

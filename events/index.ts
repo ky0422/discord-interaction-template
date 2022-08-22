@@ -1,4 +1,4 @@
-import interactionCreate from './interactionCreate';
-import ready from './ready';
+import interactionCreate from './interactionCreate'
+import ready from './ready'
 
-export { ready, interactionCreate };
+export { ready, interactionCreate }

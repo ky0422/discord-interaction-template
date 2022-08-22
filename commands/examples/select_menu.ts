@@ -1,14 +1,10 @@
-import {
-    ActionRowBuilder,
-    SelectMenuBuilder,
-    SlashCommandBuilder,
-} from 'discord.js';
-import { v4 as uuid } from 'uuid';
-import { IMessageComponent, ISelectMenu } from '../../utils/types';
+import { ActionRowBuilder, SelectMenuBuilder, SlashCommandBuilder } from 'discord.js'
+import { v4 as uuid } from 'uuid'
+import { IMessageComponent, ISelectMenu } from '../../utils/types'
 
 export default {
     process: (interaction: IMessageComponent) => {
-        const selectComponentCustomID = uuid();
+        const selectComponentCustomID = uuid()
 
         interaction.reply({
             content: `** **`,
@@ -38,25 +34,19 @@ export default {
                         ])
                 ),
             ],
-        });
+        })
 
         const collector = interaction.channel?.createMessageComponentCollector({
-            filter: (m) =>
-                m.user.id === interaction.user.id &&
-                m.customId === selectComponentCustomID,
+            filter: (m) => m.user.id === interaction.user.id && m.customId === selectComponentCustomID,
             // max: 1,
-        });
+        })
 
         collector?.on('collect', (i) => {
             i.reply({
-                content: `Selected ${(i as ISelectMenu).values
-                    .map((v) => `\`${v}\``)
-                    .join(', ')}.`,
+                content: `Selected ${(i as ISelectMenu).values.map((v) => `\`${v}\``).join(', ')}.`,
                 ephemeral: true,
-            });
-        });
+            })
+        })
     },
-    command: new SlashCommandBuilder()
-        .setName('select_menu')
-        .setDescription('Select Menu message component'),
-};
+    command: new SlashCommandBuilder().setName('select_menu').setDescription('Select Menu message component'),
+}
