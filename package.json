@@ -9,14 +9,14 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/tsukiroku/discord-interaction-template.git"
+        "url": "git+https://github.com/ky0422/discord-interaction-template.git"
     },
-    "author": "tsukiroku",
+    "author": "ky0422",
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/tsukiroku/discord-interaction-template/issues"
+        "url": "https://github.com/ky0422/discord-interaction-template/issues"
     },
-    "homepage": "https://github.com/tsukiroku/discord-interaction-template#readme",
+    "homepage": "https://github.com/ky0422/discord-interaction-template#readme",
     "dependencies": {
         "@discordjs/rest": "^0.4.1",
         "colors": "^1.4.0",

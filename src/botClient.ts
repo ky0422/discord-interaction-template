@@ -34,7 +34,7 @@ export default class extends Types.IBot {
         this.client.on('interactionCreate', (interaction: Interaction) => {
             if (!this.handleInteraction)
                 throw new Error(
-                    `\`handleInteraction\` option is required.\nSee \`https://github.com/tsukiroku/discord-interaction-template/discussions/9#discussioncomment-2920524\` for more info.\n`
+                    `\`handleInteraction\` option is required.\nSee \`https://github.com/ky0422/discord-interaction-template/discussions/9#discussioncomment-2920524\` for more info.\n`
                 )
 
             this.handleInteraction(interaction, options?.path?.path ?? 'commands', options?.path?.defaultPath ?? 'default.js')
