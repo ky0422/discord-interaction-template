@@ -7,21 +7,11 @@ export default {
 
         if (subCommand === 'all')
             interaction.reply({
-                content: `
-> **\`(dev_)[command]\`**
-> 
-> \`/button\`
-> \`/select_menu\`
-> \`/eval [code]\`
-                `,
+                content: '> **`(dev_)[command]`**\n\n> `/button`\n> `/select_menu`\n> `/eval [code]`',
             })
         else if (subCommand === 'owner')
             interaction.reply({
-                content: `
-> **\`(dev_)[command]\`**
-> 
-> \`/eval [code]\`
-                `,
+                content: '> **`(dev_)[command]`**\n\n> `/eval [code]`',
                 ephemeral: true,
             })
         else interaction.reply('`/help [all | owner]`')

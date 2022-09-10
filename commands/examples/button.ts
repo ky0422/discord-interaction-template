@@ -17,15 +17,16 @@ export default {
 
         const collector = interaction.channel?.createMessageComponentCollector({
             filter: (m) => m.user.id === interaction.user.id && m.customId === buttonComponentCustomId,
-            // max: 1,
         })
 
-        collector?.on('collect', (i) => {
-            i.reply({
-                content: 'Button clicked.',
-                ephemeral: true,
-            })
-        })
+        collector?.on(
+            'collect',
+            (interaction) =>
+                void interaction.reply({
+                    content: 'Button clicked.',
+                    ephemeral: true,
+                })
+        )
     },
     command: new SlashCommandBuilder().setName('button').setDescription('Button message component'),
 }

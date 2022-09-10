@@ -4,7 +4,7 @@ import client from '..'
 export default async (interaction: Interaction, path: string, default_path: string) => {
     if (interaction.type !== InteractionType.ApplicationCommand) return
 
-    import(`../${path}/${interaction.commandName.replace('dev_', '')}`)
+    import(`../${path}/${interaction.commandName}`)
         .then(async (command) => await command.default.process(interaction))
         .catch(async (e) =>
             import(`../${path.split('/')[0]}/${default_path}`).then(async (command) => {

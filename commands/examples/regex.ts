@@ -29,7 +29,7 @@ export default {
         })
 
         collector?.on('end', (collected, reason) => {
-            if (reason === 'time')
+            void reason === 'time' &&
                 interaction.editReply({
                     content: 'Wrong answer, try again in a minute.',
                 })

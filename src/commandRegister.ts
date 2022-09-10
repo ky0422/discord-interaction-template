@@ -32,8 +32,6 @@ export default async (options: Required<Omit<Types.IBotOptions, 'clientOptions' 
             await new REST({ version: '10' }).setToken(options.config.token ?? '').put(route, _options)
 
         if (options.config.devGuild) {
-            commands.map((c) => ((c as ApplicationCommandData).name = `dev_${(c as ApplicationCommandData).name}`))
-
             await rest(Routes.applicationGuildCommands(options.config.clientId ?? '', options.config.devGuild))
 
             options.logger.info(`Registered ${commands.length} commands. (DEV)`)
