@@ -1,9 +1,8 @@
 import { ready, interactionCreate } from './events'
-
 import config from './config'
-import BotClient from './src/botClient'
+import BotClient from './src/BotClient'
 
-if (!config.token || !(typeof config.token === 'string'))
+if (!config.token)
     throw new Error(
         `Token is an invalid value.\nSee \`https://github.com/ky0422/discord-interaction-template/discussions/9#discussioncomment-2920521\` for more info.\n`
     )
@@ -14,7 +13,7 @@ if (!config.token || !(typeof config.token === 'string'))
  * `defaultPath` option is where the file for handling when an error occurs in the command is located.
  */
 const client = new BotClient({
-    handleInteraction: interactionCreate,
+    interactionHandler: interactionCreate,
     path: config.path ?? {
         path: 'commands',
         defaultPath: 'default.js',

@@ -1,7 +1,6 @@
-import {
+import type {
     BitFieldResolvable,
     ChatInputCommandInteraction,
-    Client,
     ClientOptions,
     CommandInteraction,
     ContextMenuCommandInteraction,
@@ -12,29 +11,24 @@ import {
     ModalActionRowComponent,
     SelectMenuInteraction,
 } from 'discord.js'
-import { Logger } from './logger'
+import type Logger from './logger'
 
-interface IBotOptions {
+export type IHandler = (interaction: Interaction, path: string, defaultPath: string) => void | Promise<void>
+
+export interface BotOptions {
     readonly logger?: Logger<string>
     readonly config?: Config
     readonly path?: PathOptions
     readonly clientOptions?: ClientOptions
-    readonly handleInteraction?: (interaction: Interaction, path: string, default_path: string) => any
+    readonly interactionHandler?: IHandler
 }
 
-abstract class IBot implements IBotOptions {
-    public abstract readonly client: Client
-    public abstract readonly logger: Logger<string>
-    public abstract readonly config: Config
-    public abstract readonly handleInteraction: ((interaction: Interaction, path: string, default_path: string) => any) | undefined
-}
-
-interface PathOptions {
+export interface PathOptions {
     readonly path: string
     readonly defaultPath: string
 }
 
-interface Config {
+export interface Config {
     token?: string
     clientId?: string
     devGuild?: string
@@ -43,12 +37,10 @@ interface Config {
     intents: BitFieldResolvable<GatewayIntentsString, number> | Array<GatewayIntentBits>
 }
 
-type I = Interaction
-type ICommand = CommandInteraction
-type IMessageComponent = MessageComponentInteraction
-type IContextMenu = ContextMenuCommandInteraction
-type ISelectMenu = SelectMenuInteraction
-type ActionRowModal = ModalActionRowComponent
-type IChatInput = ChatInputCommandInteraction
-
-export { IBotOptions, IBot, PathOptions, I, ICommand, IMessageComponent, IContextMenu, ISelectMenu, IChatInput, ActionRowModal, Config }
+export type I = Interaction
+export type ICommand = CommandInteraction
+export type IMessageComponent = MessageComponentInteraction
+export type IContextMenu = ContextMenuCommandInteraction
+export type ISelectMenu = SelectMenuInteraction
+export type ActionRowModal = ModalActionRowComponent
+export type IChatInput = ChatInputCommandInteraction

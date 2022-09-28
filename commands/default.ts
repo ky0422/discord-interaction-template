@@ -1,10 +1,12 @@
-import { Types } from '../utils'
+import { bold } from 'discord.js'
+import type * as Types from '../utils/types'
 
 export default {
-    process: (interaction: Types.IMessageComponent) =>
+    process: (interaction: Types.IMessageComponent) => {
         interaction.reply({
-            content: '** **',
+            content: bold(' '),
             ephemeral: true,
-        }),
+        })
+    },
     command: null,
 }

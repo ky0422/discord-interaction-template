@@ -1,5 +1,5 @@
 import { ContextMenuCommandBuilder } from 'discord.js'
-import { Types } from '../../utils'
+import type * as Types from '../../utils/types'
 
 export default {
     process: (interaction: Types.IContextMenu) => {
@@ -8,5 +8,7 @@ export default {
             ephemeral: true,
         })
     },
-    command: new ContextMenuCommandBuilder().setName('context_menu').setType(3),
+    command: new ContextMenuCommandBuilder()
+        .setName('context_menu')
+        .setType(3),
 }

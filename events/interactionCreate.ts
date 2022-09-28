@@ -1,16 +1,13 @@
-import { Interaction, InteractionType } from 'discord.js'
-import client from '..'
+import type { Interaction } from 'discord.js'
 
-export default async (interaction: Interaction, path: string, default_path: string) => {
-    if (interaction.type !== InteractionType.ApplicationCommand) return
+export default async (interaction: Interaction, path: string, defaultPath: string) => {
+    if (!interaction.isChatInputCommand()) return
 
-    import(`../${path}/${interaction.commandName}`)
-        .then(async (command) => await command.default.process(interaction))
-        .catch(async (e) =>
-            import(`../${path.split('/')[0]}/${default_path}`).then(async (command) => {
-                command.default.process(interaction as any)
-
-                client.logger.error(e)
-            })
+    await import(`../${path}/${interaction.commandName}`)
+        .then((command) => command.default.process(interaction))
+        .catch((e) =>
+            import(`../${path.split('/')[0]}/${defaultPath}`)
+                .then((command) => command.default.process(interaction))
+                .then(() => Promise.reject(e))
         )
 }
