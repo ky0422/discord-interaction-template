@@ -1,3 +1,7 @@
 import client from '..'
 
-export default () => client.logger.info(`${client.client.guilds.cache.size} guilds, ${client.client.user?.tag}.`)
+export default () => {
+	const guildCount = client.client.guilds.cache.size
+	const clientTag = client.client.user!.tag
+	client.logger.info(`${guildCount} guilds, ${clientTag}.`)
+}

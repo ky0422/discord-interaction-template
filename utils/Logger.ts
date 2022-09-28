@@ -1,11 +1,12 @@
 import colors from 'colors'
 colors.enable()
 
-export class Logger<T> {
+export default class Logger<T> {
     constructor(public name: string = 'MAIN') {}
 
-    public log(t: string, o: boolean, ...args: Array<T>) {
-        console.log(`[${this.name.gray}] [${t}]${o ? ' ' : ''} [${new Date().toLocaleTimeString().white}]: ${args.join(' ')}`)
+    public log(type: string, o: boolean, ...args: Array<T>) {
+        const time = new Date().toLocaleTimeString()
+        console.log(`[${this.name.gray}] [${type}]${o ? ' ' : ''} [${time.white}]: ${args.join(' ')}`)
     }
 
     public info(...args: Array<T>) {

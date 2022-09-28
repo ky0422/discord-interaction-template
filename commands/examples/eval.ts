@@ -1,30 +1,37 @@
-import { SlashCommandBuilder } from 'discord.js'
-import { Discord, Types } from '../../utils'
+import { SlashCommandBuilder, bold, codeBlock } from 'discord.js'
+import type * as Types from '../../utils/types'
 import config from '../../config'
 
+const tokenRegex = /[a-zA-Z\--_]{24}\.[a-zA-Z\--_]{6}\.[a-zA-Z\--_]{38}/g
+
 export default {
-    process: (interaction: Types.IMessageComponent) => {
+    process: (interaction: Types.IChatInput) => {
         if (interaction.user.id !== config.ownerId) {
             interaction.reply({
-                content: '**You are not the owner of this bot.**',
+                content: bold('You are not the owner of this bot.'),
                 ephemeral: true,
             })
             return
         }
 
         try {
-            const result: string = eval(((interaction as unknown as Types.ICommand).options.get('code')?.value as string) ?? '')
+            const result: string = eval(interaction.options.getString('code') ?? '')
             interaction.reply({
-                content: Discord.codeBlock(result.replace(/[a-zA-Z\--_]{24}\.[a-zA-Z\--_]{6}\.[a-zA-Z\--_]{38}/g, 'TOKEN'), 'ts'),
+                content: codeBlock('ts', result.replace(tokenRegex, 'TOKEN')),
             })
         } catch (e) {
             interaction.reply({
-                content: Discord.codeBlock(e, 'ts'),
+                content: codeBlock('ts', `${e}`),
             })
         }
     },
     command: new SlashCommandBuilder()
         .setName('eval')
         .setDescription('Dangerous command. be careful when using it.')
-        .addStringOption((option) => option.setName('code').setDescription('eval').setRequired(true)),
+        .addStringOption((option) =>
+            option
+                .setName('code')
+                .setDescription('eval')
+                .setRequired(true)
+        ),
 }

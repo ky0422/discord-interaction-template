@@ -1,9 +1,9 @@
 import { GatewayIntentBits } from 'discord.js'
-import { Types } from './utils'
+import type { Config } from './utils/types'
 
 const defaultAs = <T>(data: T) => data
 
-export default defaultAs<Types.Config>({
+export default defaultAs<Config>({
     token: process.env.TOKEN,
     clientId: process.env.CLIENT_ID,
     devGuild: process.env.DEV_GUILD,
